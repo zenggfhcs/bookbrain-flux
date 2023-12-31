@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/library
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: yunxia
+    password: 768874
+
+
+# mybatis 相关配置
+mybatis:
+  configuration:
+    #    命令行输入 sql 日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #    开启驼峰命名和下划线的匹配：user_id => userId
+    map-underscore-to-camel-case: true
+
+# 日志
+logging:
+  level:
+    # 事务日志
+    org.springframework.jdbc.support.JDBCTransactionManager: debug
+  # 输出日志
+  pattern:
+    dateformat: YYYY-MM-DD mm:hh:ss
+
+# 端口
+server:
+  port: 9090
+
+# diy
+
+# 异步线程配置
+async:
+  executor:
+    thread:
+      # 配置核心线程数
+      core_pool_size: 5
+      # 配置最大线程数
+      max_pool_size: 5
+      # 配置队列大小
+      queue_capacity: 99999
+      # 配置线程池中的线程的名称前缀
+      name:
+        prefix: async-service-
