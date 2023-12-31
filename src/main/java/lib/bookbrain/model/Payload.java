@@ -26,14 +26,16 @@ protected transient TokenBody tokenBody;
 
 /**
  * 将 arg 强制转换成 Payload 对象，如果 arg 是 null 或者不是一个 Payload 实例，就创建一个新的 Payload
+ *
  * @param arg 用来转换成 Payload 对象的原始对象
  * @return arg 对应的 Payload 对象
  */
-@SuppressWarnings("unchecked") // 去除警告
+//@SuppressWarnings("unchecked") // 去除警告
 public static Payload<BaseEntity> getOrNew(Object arg) {
    if (arg instanceof Payload<? extends BaseEntity>) {
       return (Payload<BaseEntity>) arg;
    }
    return new Payload<>();
 }
+
 }

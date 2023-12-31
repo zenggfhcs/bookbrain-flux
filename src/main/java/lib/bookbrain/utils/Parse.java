@@ -14,6 +14,6 @@ static {
  * @return <b>XXX</b> 字符串
  */
 public static String serviceToDataClass(String serviceClass) {
-   return PM.getGroupOfIndex(serviceClass, ".*\\.(.*)ServiceImpl", 1);
+   return PM.getGroup(serviceClass, ".*\\.(.*)ServiceImpl", 1);
 }
 }

@@ -209,7 +209,7 @@ private Payload<BaseEntity> argsToParameter(Object[] args) {
    // token => tokenBody
    TokenBody tokenBody = Jwt.decodeToken(token);
    _payload.setTokenBody(tokenBody);
-   if (args.length == 3 && args[2].getClass() == Integer.class) {
+   if (args.length == 3 && args[2] != null && args[2].getClass() == Integer.class) {
       _payload.setId(Integer.parseInt(args[2].toString()));
    }
    return _payload;

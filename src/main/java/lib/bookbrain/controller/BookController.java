@@ -24,27 +24,27 @@ public BookController(BookService bookService) {
 
 
 @GetMapping
-public Mono<Response> getBooks(@RequestBody(required = false) Payload<Book> payload, @RequestHeader("token") String token, @RequestBody(required = false) Filter filter) {
+public Mono<Response> getBooks(@RequestBody(required = false) Payload<Book> payload, @RequestHeader("token") String ignoredToken, @RequestBody(required = false) Filter filter) {
    return Mono.just(bookService.getBy(payload, filter));
 }
 
 @PostMapping
-public Mono<Response> createBook(@RequestBody(required = false) Payload<Book> payload, @RequestHeader("token") String token) {
+public Mono<Response> createBook(@RequestBody(required = false) Payload<Book> payload, @RequestHeader("token") String ignoredToken) {
    return Mono.just(bookService.create(payload));
 }
 
-@GetMapping("/{id}")
-public Mono<Response> getBook(@RequestBody(required = false) Payload<Book> payload, @RequestHeader("token") String token, @PathVariable Integer id) {
+@GetMapping("/{ignoredId}")
+public Mono<Response> getBook(@RequestBody(required = false) Payload<Book> payload, @RequestHeader("token") String ignoredToken, @PathVariable Integer ignoredId) {
    return Mono.just(bookService.getById(payload));
 }
 
-@PatchMapping("/{id}")
-public Mono<Response> updateBook(@RequestBody(required = false) Payload<Book> payload, @RequestHeader("token") String token, @PathVariable Integer id) {
+@PatchMapping("/{ignoredId}")
+public Mono<Response> updateBook(@RequestBody(required = false) Payload<Book> payload, @RequestHeader("token") String ignoredToken, @PathVariable Integer ignoredId) {
    return Mono.just(bookService.update(payload));
 }
 
-@DeleteMapping("/{id}")
-public Mono<Response> deleteBook(@RequestBody(required = false) Payload<Book> payload, @RequestHeader("token") String token, @PathVariable Integer id) {
+@DeleteMapping("/{ignoredId}")
+public Mono<Response> deleteBook(@RequestBody(required = false) Payload<Book> payload, @RequestHeader("token") String ignoredToken, @PathVariable Integer ignoredId) {
    return Mono.just(bookService.delete(payload));
 }
 }

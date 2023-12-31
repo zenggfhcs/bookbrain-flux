@@ -20,7 +20,7 @@ public GetLogController(GetLogService logService) {
 }
 
 @GetMapping
-public Mono<Response> getLogs(@RequestBody(required = false) Payload<GetLog> payload, @RequestHeader("token") String token, @RequestBody(required = false) Filter filter) {
+public Mono<Response> getLogs(@RequestBody(required = false) Payload<GetLog> payload, @RequestHeader("token") String ignoredToken, @RequestBody(required = false) Filter filter) {
    return Mono.just(logService.getBy(payload, filter));
 }
 }

@@ -20,28 +20,28 @@ public PublisherController(PublisherService publisherService) {
 }
 
 @GetMapping
-public Mono<Response> getPublishers(@RequestBody(required = false) Payload<Publisher> payload, @RequestHeader("token") String token, @RequestBody(required = false) Filter filter) {
+public Mono<Response> getPublishers(@RequestBody(required = false) Payload<Publisher> payload, @RequestHeader("token") String ignoredToken, @RequestBody(required = false) Filter filter) {
    return Mono.just(publisherService.getBy(payload, filter));
 }
 
 @PostMapping
-public Mono<Response> createPublisher(@RequestBody(required = false) Payload<Publisher> payload, @RequestHeader("token") String token) {
+public Mono<Response> createPublisher(@RequestBody(required = false) Payload<Publisher> payload, @RequestHeader("token") String ignoredToken) {
    return Mono.just(publisherService.create(payload));
 }
 
-@GetMapping("/{id}")
-public Mono<Response> getPublisher(@RequestBody(required = false) Payload<Publisher> payload, @RequestHeader("token") String token, @PathVariable Integer id) {
+@GetMapping("/{ignoredId}")
+public Mono<Response> getPublisher(@RequestBody(required = false) Payload<Publisher> payload, @RequestHeader("token") String ignoredToken, @PathVariable Integer ignoredId) {
    return Mono.just(publisherService.getById(payload));
 }
 
 
-@PatchMapping("/{id}")
-public Mono<Response> updatePublisher(@RequestBody(required = false) Payload<Publisher> payload, @RequestHeader("token") String token, @PathVariable Integer id) {
+@PatchMapping("/{ignoredId}")
+public Mono<Response> updatePublisher(@RequestBody(required = false) Payload<Publisher> payload, @RequestHeader("token") String ignoredToken, @PathVariable Integer ignoredId) {
    return Mono.just(publisherService.update(payload));
 }
 
-@DeleteMapping("/{id}")
-public Mono<Response> deletePublisher(@RequestBody(required = false) Payload<Publisher> payload, @RequestHeader("token") String token, @PathVariable Integer id) {
+@DeleteMapping("/{ignoredId}")
+public Mono<Response> deletePublisher(@RequestBody(required = false) Payload<Publisher> payload, @RequestHeader("token") String ignoredToken, @PathVariable Integer ignoredId) {
    return Mono.just(publisherService.delete(payload));
 }
 }

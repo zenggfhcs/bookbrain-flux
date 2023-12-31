@@ -22,27 +22,27 @@ public DebitController(DebitService debitService) {
 }
 
 @GetMapping
-public Mono<Response> getDebits(@RequestBody(required = false) Payload<Debit> payload, @RequestHeader("token") String token, @RequestBody(required = false) Filter filter) {
+public Mono<Response> getDebits(@RequestBody(required = false) Payload<Debit> payload, @RequestHeader("token") String ignoredToken, @RequestBody(required = false) Filter filter) {
    return Mono.just(debitService.getBy(payload, filter));
 }
 
 @PostMapping
-public Mono<Response> createDebit(@RequestBody(required = false) Payload<Debit> payload, @RequestHeader("token") String token) {
+public Mono<Response> createDebit(@RequestBody(required = false) Payload<Debit> payload, @RequestHeader("token") String ignoredToken) {
    return Mono.just(debitService.create(payload));
 }
 
-@GetMapping("/{id}")
-public Mono<Response> getDebit(@RequestBody(required = false) Payload<Debit> payload, @RequestHeader("token") String token, @PathVariable Integer id) {
+@GetMapping("/{ignoredId}")
+public Mono<Response> getDebit(@RequestBody(required = false) Payload<Debit> payload, @RequestHeader("token") String ignoredToken, @PathVariable Integer ignoredId) {
    return Mono.just(debitService.getById(payload));
 }
 
-@PatchMapping("/{id}")
-public Mono<Response> updateDebit(@RequestBody(required = false) Payload<Debit> payload, @RequestHeader("token") String token, @PathVariable Integer id) {
+@PatchMapping("/{ignoredId}")
+public Mono<Response> updateDebit(@RequestBody(required = false) Payload<Debit> payload, @RequestHeader("token") String ignoredToken, @PathVariable Integer ignoredId) {
    return Mono.just(debitService.update(payload));
 }
 
-@DeleteMapping("/{id}")
-public Mono<Response> deleteDebit(@RequestBody(required = false) Payload<Debit> payload, @RequestHeader("token") String token, @PathVariable Integer id) {
+@DeleteMapping("/{ignoredId}")
+public Mono<Response> deleteDebit(@RequestBody(required = false) Payload<Debit> payload, @RequestHeader("token") String ignoredToken, @PathVariable Integer ignoredId) {
    return Mono.just(debitService.delete(payload));
 }
 }

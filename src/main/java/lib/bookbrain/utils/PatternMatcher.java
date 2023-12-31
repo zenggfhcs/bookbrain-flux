@@ -22,7 +22,7 @@ public static PatternMatcher generate() {
  * @param index 分组下标
  * @return 成功则返回期望匹配结果，失败则返回原有匹配字符串
  */
-public  String getGroupOfIndex(String str, String reg, int index) {
+public  String getGroup(String str, String reg, int index) {
    Matcher _matcher = getMatcher(str, reg);
    
    // 匹配成功并且存在希望获取到的分组下标有效
